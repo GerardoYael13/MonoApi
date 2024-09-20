@@ -1,0 +1,26 @@
+name: Docker build & Publish
+on: 
+  push: 
+      branches:
+        - main
+
+jobs:
+    build-and-push:
+      runs-on: ubuntu-latest
+      steps: 
+          - name: Clone code
+            uses: actions/checkout@v2
+          
+          - name: Login to Docker hub
+            run: docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
+
+          - name: Build Docker Image
+            run: docker build -t gyog/monoapi:${{ github.sha }} .
+
+          - name: Tag Latest
+            run: docker tag gyog/monoapi:${{ github.sha }} gyog/monoapi:latest
+          
+          - name: Push Docker Image
+            run: |
+              docker push gyog/monoapi:${{ github.sha }} 
+              docker push gyog/monoapi:latest
