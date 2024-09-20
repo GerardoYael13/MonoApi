@@ -1,7 +1,7 @@
 import express from 'express';
 import 'dotenv/config';
 import { envs } from './config/envs.plugin';
-import { MongoDatabase } from './data/init'; // Asegúrate de que la ruta es correcta
+import { MongoDatabase } from './data/init'; 
 import { AppRoutes } from './presentation/controllers/routes';
 import { emailJob } from './domain/jobs/email.job';
 

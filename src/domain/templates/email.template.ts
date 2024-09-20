@@ -78,10 +78,10 @@ export function generateIncidentEmailTemplate(title: string,description:string, 
 }
 
 export const generateMapboxStaticImageURL= (lat:number, lng:number) =>{
-    const accessToken = envs.MAPBOX_ACCESS_TOKEN; // Reemplaza con tu token de acceso de Mapbox
-    const zoom = 13; // Nivel de zoom
-    const width = 800; // Ancho de la imagen
-    const height = 500; // Altura de la imagen
+    const accessToken = envs.MAPBOX_ACCESS_TOKEN; 
+    const zoom = 13; 
+    const width = 800; 
+    const height = 500; 
  
     return `https://api.mapbox.com/styles/v1/mapbox/light-v11/static/pin-l-embassy+f74e4e(${lng},${lat})/${lng},${lat},${zoom}/${width}x${height}?access_token=${accessToken}`;
 }
